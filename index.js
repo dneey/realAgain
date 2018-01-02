@@ -1,12 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+// const bluebird = require('bluebird');
 
 const app = express();
 
 // connect to mongo db
-mongoose.connect('mongodb://localhost/ninjago');
-mongoose.Promise = global.Promise;
+// mongoose.Promise = require('bluebird');
+// mongoose.connect(configDB.url, {
+//     useMongoClient: true,
+//     promiseLibrary: require('bluebird'),
+// });
+mongoose.connect('mongodb://localhost/ninjago', {
+    useMongoClient: true,
+    promiseLibrary: require('bluebird'),
+});
+
 app.use(bodyParser.json());
 
 
